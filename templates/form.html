@@ -1,0 +1,156 @@
+<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Ticket Price Predictor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('{{ url_for("static", filename="flights.jpg") }}');  /* Specify the path to your image */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      max-width: 500px;
+      width: 100%;
+    }
+    .form-title {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 60%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-group select {
+      cursor: pointer;
+    }
+    .form-group input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2 class="form-title">End To End Datascience ML Project On
+                              Flight Ticket Price Prediction
+    </h2>
+    <form action="{{url_for('predict_datapoint')}}" method="post">
+      <center>
+      <div class="form-group">
+        <label for="airline" style="display: inline-block; margin-right: 80px;">Airline:</label>
+        <select id="airline" name="airline">
+          <option value="Vistara">Vistara</option>
+          <option value="Air_India">Air India</option>
+          <option value="Indigo">Indigo</option>
+          <option value="GO_FIRST">Go First</option>
+          <option value="AirAsia">AirAsia</option>
+          <option value="SpiceJet">SpiceJet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="source_city" style="display: inline-block; margin-right: 75px;">Source:</label>
+        <select id="source_city" name="source_city">
+          <option value="Delhi">Delhi</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Chennai">Chennai</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="destination_city" style="display: inline-block; margin-right: 45px;">Destination:</label>
+        <select id="destination_city" name="destination_city">
+          <option value="Delhi">Delhi</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Chennai">Chennai</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="departure_time" style="display: inline-block; margin-right: 15px;">Departure Time:</label>
+        <select id="departure_time" name="departure_time">
+          <option value="Morning">Morning</option>
+          <option value="Early_Morning">Early Morning</option>
+          <option value="Evening">Evening</option>
+          <option value="Night">Night</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Late_Night">Late Night</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="arrival_time" style="display: inline-block; margin-right: 40px;">Arrival Time:</label>
+        <select id="arrival_time" name="arrival_time">
+          <option value="Morning">Morning</option>
+          <option value="Early_Morning">Early Morning</option>
+          <option value="Evening">Evening</option>
+          <option value="Night">Night</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Late_Night">Late Night</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="stops" style="display: inline-block; margin-right: 90px;">Stops:</label>
+        <select id="stops" name="stops">
+          <option value="zero">0</option>
+          <option value="one">1</option>
+          <option value="two_or_more">2 Or More</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="class" style="display: inline-block; margin-right: 90px;">Class:</label>
+        <select id="class" name="class">
+          <option value="Economy">Economy</option>
+          <option value="Business">Business</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="duration" style="display: inline-block; margin-right: 70px;">Duration:</label>
+        <input type="text" id="duration" name="duration" placeholder="Example: 2 hours 30 mins = 2.5">
+      </div>
+      <div class="form-group">
+        <label for="days_left" style="display: inline-block; margin-right: 65px;">Days Left:</label>
+        <input type="text" id="days_left" name="days_left" placeholder="Example: 21">
+      </div>
+      <br>
+      <div class="form-group" style="clear:both; width: 200px;">
+        <input type="submit" value="Submit">
+      </div>
+    </center>
+    </form>
+    <br>
+    {% if final_result %}
+      <center><p style="font-weight: bold; font-size: large;">Ticket Price: ₹{{ final_result }}</p></center>
+    {% endif %}
+    <br>
+  </div>
+</body>
+</html>
