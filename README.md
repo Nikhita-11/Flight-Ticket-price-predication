@@ -1,4 +1,4 @@
-## End to End Project On NYC Taxi Trip Duration Prediction
+## End to End Project On Flight Ticket Price Prediction
 
 ### Step 1: Create a `new environment`
 
