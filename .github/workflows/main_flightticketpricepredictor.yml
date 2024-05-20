@@ -64,4 +64,4 @@ jobs:
         with:
           app-name: 'flightticketpricepredictor'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EB6AA0DC02B74A3FB7F0F21C612BD57A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E07BC2FF08884977A7A3A4D3AC0797A8 }}
