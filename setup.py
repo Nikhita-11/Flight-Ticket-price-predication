@@ -16,9 +16,9 @@ def get_requirements(file_path:str)-> List[str]:
 setup(
     name = "Flight_Ticket_Price_Prediction", 
     version = "0.0.1", 
-    author = "Sagnik Sarkar", 
+    author = "Nikthita ", 
     description= "An End to End ML Project to Predict The Price Of Flights",
-    author_email= "sagnik.sarkar1996@gmail.com", 
+    author_email= "nikhitanadakarni@gmail.com", 
     install_requires = get_requirements("requirements.txt"),
     packages= find_packages()
     )
